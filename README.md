@@ -28,4 +28,4 @@ Your web browser will open with the survey form.
 
 Fill out the survey and submit it.
 
-Open the generated CSV file to view your response.
+Open the generated CSV file to view your response, or use the view results page.

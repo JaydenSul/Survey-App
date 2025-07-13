@@ -28,8 +28,12 @@ if st.button("Add device"):
         st.session_state.devices_list.append(device)
 
 st.write(f"Thanks, {name}! You have added these devices:")
-for d in st.session_state.devices_list:
-    st.write(f"- {d}")
+for i, d in enumerate(st.session_state.devices_list):
+    col1, col2 = st.columns([8, 1])
+    col1.write(f"- {d}")
+    if col2.button("X", key=f"remove_{i}"):
+        st.session_state.devices_list.pop(i)
+        st.experimental_rerun()
 
 if st.button("Submit Survey"):
     write_header = not os.path.exists(filename) or os.path.getsize(filename) == 0
@@ -40,3 +44,4 @@ if st.button("Submit Survey"):
         for device in st.session_state.devices_list:
             writer.writerow([survey_number, name, device, timestamp])
     st.success(f"Survey #{survey_number} saved to {filename}")
+
